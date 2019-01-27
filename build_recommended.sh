@@ -6,13 +6,17 @@ source $BASE_DIR/common.sh
 VERSION=${1:-}
 
 version_input_check $VERSION
-	information "Building Recomended packages"
+create_folders
+information "Building Recomended packages"
 
 libs=( unzip )
-install_libs $libs
+for lib in "${libs[@]}"
+    do
+        information "Installing required libs $lib"
+        sudo yum install -y $lib || (error "Unable to install $lib" && exit)
+    done
 
-R_OUTPUT_FOLDER="/opt/R-package-out"
-sudo chown -R $(whoami) ${R_OUTPUT_FOLDER}
+ 
 
 R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip
 

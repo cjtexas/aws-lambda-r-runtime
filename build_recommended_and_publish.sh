@@ -6,6 +6,7 @@ source $BASE_DIR/common.sh
 VERSION=${1:-}
 BUCKET=${2:-}
 version_input_check $VERSION
+create_folders
 
  if [ -z "$BUCKET" ];
     then

@@ -6,23 +6,9 @@ source $BASE_DIR/common.sh
 VERSION=${1:-}
 
 version_input_check $VERSION
+create_folders
 
 information "Building R"
-
-R_OUTPUT_FOLDER="/opt/R-package-out"
-R_SOURCE_FOLDER="/opt/R"
-
-sudo chown -R $(whoami) ${R_OUTPUT_FOLDER}
-
-
- 
-rm -rf $R_SOURCE_FOLDER
- 
-
-mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
-
- 
- 
  
 if [ ! -f "${R_OUTPUT_FOLDER}/R-$VERSION.tar.gz" ]; then
 	install_if_not_exists "wget"

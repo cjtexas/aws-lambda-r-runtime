@@ -5,6 +5,7 @@ export MAKEFLAGS=-j$(($(grep -c ^processor /proc/cpuinfo) - 0))
 export PATH="~/.local/bin:$PATH"
 
 R_OUTPUT_FOLDER="/opt/R-package-out"
+R_SOURCE_FOLDER="/opt/R"
 
 
 sudo mkdir -p $R_OUTPUT_FOLDER
@@ -171,4 +172,21 @@ function install_libs()
         information "Installing required libs $lib"
         sudo yum install -y $lib || (error "Unable to install $lib" && exit)
     done
+}
+
+
+functiopn create_folders()
+{
+
+
+    if [ !  -d "${R_SOURCE_FOLDER}" ]; then
+        sudo mkdir $R_SOURCE_FOLDER|| error "Unable to create folder ${R_SOURCE_FOLDER}"
+    fi
+    if [ !  -d "${R_OUTPUT_FOLDER}" ]; then
+        sudo mkdir $R_OUTPUT_FOLDER || error "Unable to create folder ${R_OUTPUT_FOLDER}"
+    fi
+
+    chown -R $(whoami) $R_SOURCE_FOLDER
+    chown -R $(whoami) $R_OUTPUT_FOLDER
+
 }
