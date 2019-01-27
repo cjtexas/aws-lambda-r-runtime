@@ -186,7 +186,7 @@ function create_folders()
         sudo mkdir $R_OUTPUT_FOLDER || error "Unable to create folder ${R_OUTPUT_FOLDER}"
     fi
 
-    chown -R $(whoami) $R_SOURCE_FOLDER
-    chown -R $(whoami) $R_OUTPUT_FOLDER
+   sudo   chown -R $(whoami) $R_SOURCE_FOLDER
+     sudo chown -R $(whoami) $R_OUTPUT_FOLDER
 
 }
