@@ -39,7 +39,7 @@ mv $TMP/R-$VERSION/* $R_SOURCE_FOLDER
 
 rm -rf $TMP
  
-libs=( git file wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
+libs=( file "git" wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
 install_libs $libs
 
 
