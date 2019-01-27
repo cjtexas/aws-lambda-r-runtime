@@ -10,14 +10,14 @@ version_input_check $VERSION
 information "Building R"
 
 R_OUTPUT_FOLDER="/opt/R-package-out"
-R_SOURCE_FOLDER=${R_OUTPUT_FOLDER}/R-$VERSION
+R_SOURCE_FOLDER="/opt/R"
 
 sudo chown -R $(whoami) ${R_OUTPUT_FOLDER}
 
 
-if [ -d "${R_SOURCE_FOLDER}" ]; then
-  	rm -rf $R_SOURCE_FOLDER
-fi
+ 
+rm -rf $R_SOURCE_FOLDER
+ 
 
 mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
 
@@ -40,7 +40,7 @@ TMP=$(mktemp -d)
 tar -xf $R_OUTPUT_FOLDER/R-$VERSION.tar.gz -C $TMP
 
 
-mv $TMP/R-$VERSION/* $R_SOURCE_FOLDER
+mv $TMP/R-$VERSION/* $R_SOURCE_FOLDER/
 
 rm -rf $TMP
  
@@ -65,7 +65,7 @@ cd ${R_SOURCE_FOLDER}
 information "Installing Dev tools"
 yum -y groupinstall "Development Tools"
 
-./configure --prefix=$R_SOURCE_FOLDER --exec-prefix=$R_SOURCE_FOLDER --with-libpth-prefix=/opt/	
+./configure --prefix=$R_OPT --exec-prefix=$R_OPT --with-libpth-prefix=/opt/	
 
 make -j
 cp /usr/lib64/libgfortran.so.4 lib/
