@@ -6,7 +6,7 @@ set -euo pipefail
 while true
 do
 
-  command -v  sed >/dev/null ||(information "installing sed"  &&  (yum -y install sed || error "unable to install sed"))   
+  sudo yum -y install sed
   HEADERS="$(mktemp)"
   # Get an event
   EVENT_DATA=$(curl -sS -LD "$HEADERS" -X GET "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/next")
@@ -14,7 +14,7 @@ do
   ls -la /opt/R
   ls -la /opt
   ls -la /usr/bin
-  
+
   /opt/R/bin/Rscript /opt/runtime.r $EVENT_DATA $REQUEST_ID
 
 done
