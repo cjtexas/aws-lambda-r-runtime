@@ -11,7 +11,7 @@ This role should have the following properties:
 - Permissions – AWSLambdaBasicExecutionRole.
 
 Furthermore you need a current version of the AWS CLI.
-
+ 
 Then create a lambda function which uses the R runtime layer:
 ```bash
 cd example/
