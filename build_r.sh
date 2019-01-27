@@ -49,7 +49,7 @@ information "Require libs  installed \n\n"
  
 cd ${R_SOURCE_FOLDER}
 information "Installing Dev tools"
-yum -y groupinstall "Development Tools"
+sudo yum -y groupinstall "Development Tools"
 
 ./configure --prefix=$R_OPT --exec-prefix=$R_OPT --with-libpth-prefix=/opt/	
 
