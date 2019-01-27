@@ -42,8 +42,10 @@ sudo yum install -y openssl-devel libxml2-devel
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("aws.s3")'
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("rjson")'
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("devtools")'
+/opt/R/bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("RCurl")'
+/opt/R/bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("RJSONIO")'
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); devtools::install_github("twitter/AnomalyDetection")'
 
 
 
-zip -r R-$VERSION.zip bin/ lib/ lib64/ etc/ library/ doc/ modules/ share/
+zip -r R-3.5.2.zip bin/ lib/ lib64/ etc/ library/ doc/ modules/ share/

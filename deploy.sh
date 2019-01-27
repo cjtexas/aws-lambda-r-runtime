@@ -9,18 +9,18 @@ REGION=${3:-}
 
  if [ -z "$VERSION" ];
     then
-        error 'VERSION name required'
+        echo 'VERSION name required'
         exit 1
     fi
 
  if [ -z "$BUCKET" ];
     then
-        error 'bucket name required'
+        echo 'bucket name required'
         exit 1
     fi
  if [ -z "$REGION" ];
     then
-        error 'region name required'
+        echo 'region name required'
         exit 1
     fi
 
