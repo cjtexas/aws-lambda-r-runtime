@@ -39,8 +39,12 @@ mv $TMP/R-$VERSION/* $R_SOURCE_FOLDER
 
 rm -rf $TMP
  
-libs=( file "git" wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
-install_libs $libs
+libs=( git file "git" wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
+for lib in "${libs[@]}"
+    do
+        information "Installing required libs $lib"
+        sudo yum install -y $lib || (error "Unable to install $lib" && exit)
+    done
 
 
 
