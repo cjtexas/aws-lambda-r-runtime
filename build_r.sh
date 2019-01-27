@@ -43,6 +43,8 @@ libs=( git file wget make zip readline-devel xorg-x11-server-devel libX11-devel 
 install_libs $libs
 
 
+
+
 information "Require libs  installed \n\n"
  
 

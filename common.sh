@@ -168,7 +168,7 @@ function install_libs()
      IN1=${1:-}
      for lib in "${IN1[@]}"
     do
-        information "Installing $lib"
-       yum -y install $lib || error "Unable to install $lib"
+        echo  "Installing $lib"
+       sudo yum -y install $lib 
     done
 }
