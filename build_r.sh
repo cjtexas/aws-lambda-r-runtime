@@ -10,12 +10,15 @@ information "Building R"
 R_OUTPUT_FOLDER="/opt/R-package-out"
 R_SOURCE_FOLDER=${R_OUTPUT_FOLDER}/R-$VERSION
 
+sudo chown -R $(whoami) ${R_OUTPUT_FOLDER}
+
 
 if [ -d "${R_SOURCE_FOLDER}" ]; then
   	rm -rf $R_SOURCE_FOLDER
 fi
-	sudo mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
-	sudo chown $(whoami) ${R_SOURCE_FOLDER}
+
+mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
+
  
  
  
@@ -32,7 +35,6 @@ fi
 install_if_not_exists "tar"
 
 TMP=$(mktemp -d)
-sudo chown $(whoami) ${R_SOURCE_FOLDER}
 tar -xf $R_OUTPUT_FOLDER/R-$VERSION.tar.gz -C $TMP
 
 
