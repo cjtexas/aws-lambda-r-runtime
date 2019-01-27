@@ -179,9 +179,11 @@ function create_folders()
 {
 
 
-    if [ !  -d "${R_SOURCE_FOLDER}" ]; then
-        sudo mkdir $R_SOURCE_FOLDER|| error "Unable to create folder ${R_SOURCE_FOLDER}"
+    if [  -d "${R_SOURCE_FOLDER}" ]; then
+        sudo rm -rf $R_SOURCE_FOLDER
     fi
+    sudo mkdir $R_SOURCE_FOLDER|| error "Unable to create folder ${R_SOURCE_FOLDER}"
+
     if [ !  -d "${R_OUTPUT_FOLDER}" ]; then
         sudo mkdir $R_OUTPUT_FOLDER || error "Unable to create folder ${R_OUTPUT_FOLDER}"
     fi
