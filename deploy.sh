@@ -48,9 +48,9 @@ function releaseToRegion {
 regions=(us-east-1 ap-south-1 ca-central-1 eu-central-1 sa-east-1)
 
 
-source ./build_r_and_publish.sh $1 $2
-source ./build_recommended.sh $1
-source ./build_runtime.sh $1
+source $BASE_DIR/build_r_and_publish.sh $1 $2
+source $BASE_DIR/build_recommended.sh $1
+source $BASE_DIR/build_runtime.sh $1
 
 for region in "${regions[@]}"
 do
