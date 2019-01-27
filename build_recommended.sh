@@ -9,6 +9,10 @@ version_input_check $VERSION
 
 libs=( unzip )
 install_libs $libs
+
+R_OUTPUT_FOLDER="/opt/R-package-out"
+sudo chown $(whoami) ${R_SOURCE_FOLDER}
+
 R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip
 
 if [ ! -f "$R_COMPILED_ZIP" ]; then

@@ -15,7 +15,8 @@ if [ -d "${R_SOURCE_FOLDER}" ]; then
   	rm -rf $R_SOURCE_FOLDER
 fi
 	sudo mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
-
+	sudo chown $(whoami) ${R_SOURCE_FOLDER}
+ 
  
  
 if [ ! -f "${R_OUTPUT_FOLDER}/R-$VERSION.tar.gz" ]; then

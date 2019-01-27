@@ -22,3 +22,5 @@ information "Uploading R to aws bucket $BUCKET "
 aws s3 cp $R_COMPILED_ZIP \
     s3://$BUCKET/R/R-$VERSION.zip || error "Unable to deploy R to bucket $BUCKET"
 success "Uploaded R to aws bucket $BUCKET"
+
+ 
