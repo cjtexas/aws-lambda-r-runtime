@@ -5,7 +5,7 @@ source $BASE_DIR/common.sh
 
 VERSION=${1:-}
 BUCKET=${2:-}
-RGION=${3:-}
+REGION=${3:-}
 version_input_check $VERSION
 
  if [ -z "$BUCKET" ];
@@ -13,7 +13,7 @@ version_input_check $VERSION
         error 'bucket name required'
         exit 1
     fi
- if [ -z "$RGION" ];
+ if [ -z "$REGION" ];
     then
         error 'region name required'
         exit 1
@@ -46,15 +46,13 @@ function releaseToRegion {
     information "Published layer $layer_arn \n"
 }
 
-regions=(us-east-1)
-
+ 
 
 source $BASE_DIR/build_r_and_publish.sh $1 $2
 source $BASE_DIR/build_recommended.sh $1
 source $BASE_DIR/build_runtime.sh $1
 
-for region in "${regions[@]}"
-do
-   releaseToRegion $VERSION $region  runtime  $BUCKET
-   releaseToRegion $VERSION $region recommended  $BUCKET
-done
+ 
+   releaseToRegion $VERSION $REGION  runtime  $BUCKET
+   releaseToRegion $VERSION $REGION recommended  $BUCKET
+ 
