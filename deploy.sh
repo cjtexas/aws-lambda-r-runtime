@@ -35,7 +35,7 @@ function releaseToRegion {
     response=$(aws lambda publish-layer-version --layer-name $layer_name \
         --content S3Bucket=$bucket,S3Key=$resource --region $region)
     echo $response > $R_OUTPUT_FOLDER/R-$region-$VERSION-$layer-response.txt
-    
+
     version_number=$(jq -r '.Version' <<< "$response")
 
     information "Layer $layer_name copied to bucket $bucket in region $region \n"
@@ -52,11 +52,11 @@ function releaseToRegion {
 
  
 
-source $BASE_DIR/build_r_and_publish.sh $1 $2
-source $BASE_DIR/build_recommended.sh $1
+#source $BASE_DIR/build_r_and_publish.sh $1 $2
+#source $BASE_DIR/build_recommended.sh $1
 source $BASE_DIR/build_runtime.sh $1
 
  
 releaseToRegion $VERSION $REGION  runtime  $BUCKET
-releaseToRegion $VERSION $REGION recommended  $BUCKET
+#releaseToRegion $VERSION $REGION recommended  $BUCKET
  
