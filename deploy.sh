@@ -46,7 +46,7 @@ function releaseToRegion {
     information "Published layer $layer_arn \n"
 }
 
-regions=(us-east-1 ap-south-1 ca-central-1 eu-central-1 sa-east-1)
+regions=(us-east-1)
 
 
 source $BASE_DIR/build_r_and_publish.sh $1 $2
