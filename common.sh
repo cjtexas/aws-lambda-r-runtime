@@ -163,15 +163,13 @@ log_debug() {
     echo $msg >>$LOG_FILE
 }
 
+
 function install_libs()
 {
-     IN1=${1:-}
-     for lib in "${IN1[@]}"
+    $1=${1:-}
+     for lib in "${1[@]}"
     do
-        echo  "Installing $lib"
-       sudo yum -y install $lib 
-       echo  "Installed $lib"
+        information "Installing required libs $lib"
+        sudo yum install -y $lib || (error "Unable to install $lib" && exit)
     done
-
-    echo "all libs installed "
 }
