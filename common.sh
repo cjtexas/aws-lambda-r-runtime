@@ -168,6 +168,7 @@ function install_libs()
      IN1=${1:-}
      for lib in "${IN1[@]}"
     do
-        install_if_not_exists $lib
+        information "Installing $lib"
+       yum -y install $lib || error "Unable to install $lib"
     done
 }
