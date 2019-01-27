@@ -51,7 +51,7 @@ cd ${R_SOURCE_FOLDER}
 information "Installing Dev tools"
 sudo yum -y groupinstall "Development Tools"
 
-./configure --prefix=$R_OPT --exec-prefix=$R_OPT --with-libpth-prefix=/opt/	
+./configure --prefix=$R_SOURCE_FOLDER --exec-prefix=$R_SOURCE_FOLDER --with-libpth-prefix=/opt/	
 
 make -j
 cp /usr/lib64/libgfortran.so.4 lib/
