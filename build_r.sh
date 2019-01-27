@@ -58,6 +58,8 @@ cp /usr/lib64/libgfortran.so.4 lib/
 cp /usr/lib64/libgomp.so.1 lib/
 cp /usr/lib64/libquadmath.so.0 lib/
 cp /usr/lib64/libstdc++.so.6 lib/
+cp /usr/lib64/libpcre.so.1 lib/
+
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("httr")'
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("aws.s3")'
 ./bin/Rscript -e 'chooseCRANmirror(graphics=FALSE, ind=34); install.packages("rjson")'

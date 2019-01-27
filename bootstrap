@@ -5,11 +5,14 @@ set -euo pipefail
 # Processing
 while true
 do
+
+  command -v  sed >/dev/null ||(information "installing sed"  &&  (yum -y install sed || error "unable to install sed"))   
   HEADERS="$(mktemp)"
   # Get an event
   EVENT_DATA=$(curl -sS -LD "$HEADERS" -X GET "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/next")
   REQUEST_ID=$(grep -Fi Lambda-Runtime-Aws-Request-Id "$HEADERS" | tr -d '[:space:]' | cut -d: -f2)
   ls -la /opt/R
   ls -la /opt
+  ls -la /opt/bin
   /opt/R/bin/Rscript /opt/runtime.r $EVENT_DATA $REQUEST_ID
 done
