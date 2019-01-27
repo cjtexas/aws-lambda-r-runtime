@@ -1,4 +1,5 @@
 #!/bin/bash
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source ./common.sh
 
@@ -16,7 +17,7 @@ sudo chown -R $(whoami) ${R_OUTPUT_FOLDER}
 R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip
 
 if [ ! -f "$R_COMPILED_ZIP" ]; then
-	./build_r.sh $VERSION 
+	$BASE_DIR/build_r.sh $VERSION 
 fi
 
 

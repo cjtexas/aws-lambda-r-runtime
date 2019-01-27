@@ -1,4 +1,5 @@
 source ./common.sh
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 VERSION=${1:-}
 
@@ -17,7 +18,7 @@ R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip
 
 
 if [ ! -f "$R_COMPILED_ZIP" ]; then
-	./build_r.sh $VERSION 
+	$BASE_DIR/build_r.sh $VERSION 
 fi
 
 

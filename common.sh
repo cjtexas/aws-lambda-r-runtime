@@ -5,7 +5,6 @@ export MAKEFLAGS=-j$(($(grep -c ^processor /proc/cpuinfo) - 0))
 export PATH="~/.local/bin:$PATH"
 
 R_OUTPUT_FOLDER="/opt/R-package-out"
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 
 sudo mkdir -p $R_OUTPUT_FOLDER

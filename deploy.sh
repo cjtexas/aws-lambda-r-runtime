@@ -1,6 +1,7 @@
 #!/bin/bash
 
 source ./common.sh
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 VERSION=${1:-}
 BUCKET=${2:-}

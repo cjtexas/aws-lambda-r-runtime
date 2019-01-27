@@ -1,4 +1,6 @@
 #!/bin/bash
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 source ./common.sh
 
 VERSION=${1:-}
@@ -29,12 +31,4 @@ success "Uploaded recommended packages to aws"
 
 
 
-"R-$version/$layer.zip"
-aws s3 cp $layer.zip s3://$bucket/R-$version/$layer.zip --region $region
-    response=$(aws lambda publish-layer-version --layer-name $layer_name \
-        --content S3Bucket=$bucket,S3Key=$resource --region $region)
-    version_number=$(jq -r '.Version' <<< "$response")
-    aws lambda add-layer-version-permission --layer-name $layer_name \
-        --version-number $version_number --principal "*" \
-        --statement-id publish --action lambda:GetLayerVersion \
-        --region $region
+ 

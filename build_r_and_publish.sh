@@ -1,4 +1,5 @@
 #!/bin/bash
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 source ./common.sh
 
@@ -13,7 +14,7 @@ version_input_check $VERSION
     fi
 R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip
 if [ ! -f "$R_COMPILED_ZIP" ]; then
-	./build_r.sh $VERSION
+	$BASE_DIR/build_r.sh $VERSION
 fi
 
 check_aws_configured
@@ -23,4 +24,3 @@ aws s3 cp $R_COMPILED_ZIP \
     s3://$BUCKET/R/R-$VERSION.zip || error "Unable to deploy R to bucket $BUCKET"
 success "Uploaded R to aws bucket $BUCKET"
 
- 
