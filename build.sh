@@ -2,11 +2,17 @@
 
 set -euo pipefail
 
-VERSION=$1
+BUCKET=$2
 
 if [ -z "$VERSION" ];
 then
     echo 'version number required'
+    exit 1
+fi
+
+if [ -z "$BUCKET" ];
+then
+    echo 'BUCKET required'
     exit 1
 fi
 

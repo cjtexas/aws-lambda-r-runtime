@@ -14,7 +14,7 @@ rm -rf R/
 unzip -q R-$VERSION.zip -d R/
 rm -r R/doc/manual/
 #remove some libraries to save space
-recommended=(boot class cluster codetools foreign KernSmooth lattice MASS Matrix mgcv nlme nnet rpart spatial survival)
+recommended=(boot class cluster codetools foreign KernSmooth lattice MASS Matrix mgcv nlme nnet rpart spatial survival devtools AnomalyDetection)
 for package in "${recommended[@]}"
 do
    rm -r R/library/$package/
