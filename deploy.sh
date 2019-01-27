@@ -2,6 +2,7 @@
 
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source $BASE_DIR/common.sh
+R_OUTPUT_FOLDER="/opt/R-package-out"
 
 VERSION=${1:-}
 BUCKET=${2:-}
@@ -33,6 +34,8 @@ function releaseToRegion {
     aws s3 cp $R_OUTPUT_FOLDER/$layer-$VERSION.zip s3://$bucket/$resource --region $region
     response=$(aws lambda publish-layer-version --layer-name $layer_name \
         --content S3Bucket=$bucket,S3Key=$resource --region $region)
+    echo $response > $R_OUTPUT_FOLDER/R-$region-$VERSION-$layer-response.txt
+    
     version_number=$(jq -r '.Version' <<< "$response")
 
     information "Layer $layer_name copied to bucket $bucket in region $region \n"
@@ -42,6 +45,7 @@ function releaseToRegion {
         --version-number $version_number --principal "*" \
         --statement-id publish --action lambda:GetLayerVersion \
         --region $region
+
     layer_arn=$(jq -r '.LayerVersionArn' <<< "$response")
     information "Published layer $layer_arn \n"
 }
@@ -53,6 +57,6 @@ source $BASE_DIR/build_recommended.sh $1
 source $BASE_DIR/build_runtime.sh $1
 
  
-   releaseToRegion $VERSION $REGION  runtime  $BUCKET
-   releaseToRegion $VERSION $REGION recommended  $BUCKET
+releaseToRegion $VERSION $REGION  runtime  $BUCKET
+releaseToRegion $VERSION $REGION recommended  $BUCKET
  
