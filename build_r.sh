@@ -1,12 +1,13 @@
  #!/bin/bash
-source ./common.sh
+
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source $BASE_DIR/common.sh
 
 VERSION=${1:-}
 
 version_input_check $VERSION
 
 information "Building R"
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 R_OUTPUT_FOLDER="/opt/R-package-out"
 R_SOURCE_FOLDER=${R_OUTPUT_FOLDER}/R-$VERSION

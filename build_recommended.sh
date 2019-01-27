@@ -1,7 +1,7 @@
 #!/bin/bash
 BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+source $BASE_DIR/common.sh
 
-source ./common.sh
 
 VERSION=${1:-}
 
