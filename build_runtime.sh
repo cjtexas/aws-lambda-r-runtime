@@ -8,9 +8,9 @@ information "Building Runtime"
 
 
 if [ -d "$R_OUTPUT_FOLDER/$VERSION/runtime" ]; then
-  	rm -rf $R_OUTPUT_FOLDER/$VERSION/runtime
+  	sudo rm -rf $R_OUTPUT_FOLDER/$VERSION/runtime
 fi
-	sudo mkdir -p $R_OUTPUT_FOLDER/$VERSION/runtime || error "Unable to create folder $R_OUTPUT_FOLDER/$VERSION/runtime"
+mkdir -p $R_OUTPUT_FOLDER/$VERSION/runtime || error "Unable to create folder $R_OUTPUT_FOLDER/$VERSION/runtime"
 
 
 R_COMPILED_ZIP=$R_OUTPUT_FOLDER/R-compiled-$VERSION.zip

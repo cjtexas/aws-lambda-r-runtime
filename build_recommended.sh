@@ -21,9 +21,10 @@ fi
 
 
 if [ -d "$R_OUTPUT_FOLDER/$VERSION/recomended" ]; then
-  	rm -rf $R_OUTPUT_FOLDER/$VERSION/recomended
+  	sudo rm -rf $R_OUTPUT_FOLDER/$VERSION/recomended
 fi
-	sudo mkdir -p $R_OUTPUT_FOLDER/$VERSION/recomended || error "Unable to create folder $R_OUTPUT_FOLDER/$VERSION/recomended"
+
+mkdir -p $R_OUTPUT_FOLDER/$VERSION/recomended || error "Unable to create folder $R_OUTPUT_FOLDER/$VERSION/recomended"
 
 cd $R_OUTPUT_FOLDER/$VERSION/recomended
 
