@@ -36,6 +36,6 @@ do
 done
 chmod -R 755 R/
 
-zip -r -q $R_OUTPUT_FOLDER/recommended.zip R/
+zip -r -q $R_OUTPUT_FOLDER/recommended-$VERSION.zip R/
 
-success "Recommended package zip located at $R_OUTPUT_FOLDER/recommended.zip"
+success "Recommended package zip located at $R_OUTPUT_FOLDER/recommended-$VERSION.zip"

@@ -25,11 +25,11 @@ function releaseToRegion {
     region=$2
     layer=$3
     bucket=$4
-    resource="R-$version/$layer.zip"
+    resource="R/$region/$VERSION/$layer.zip"
     layer_name="r-$layer-$version"
     layer_name="${layer_name//\./_}"
     information "Copying layer $layer_name to bucket $bucket in region $region"
-    aws s3 cp $layer.zip s3://$bucket/$region/$resource --region $region
+    aws s3 cp $R_OUTPUT_FOLDER/$layer-$VERSION.zip s3://$bucket/$resource --region $region
     response=$(aws lambda publish-layer-version --layer-name $layer_name \
         --content S3Bucket=$bucket,S3Key=$resource --region $region)
     version_number=$(jq -r '.Version' <<< "$response")
@@ -54,6 +54,6 @@ source ./build_runtime.sh $1
 
 for region in "${regions[@]}"
 do
-   releaseToRegion $VERSION $region runtime $BUCKET
-   releaseToRegion $VERSION $region recommended $BUCKET
+   releaseToRegion $VERSION $region  runtime  $BUCKET
+   releaseToRegion $VERSION $region recommended  $BUCKET
 done

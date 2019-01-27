@@ -40,6 +40,6 @@ cp $BASE_DIR/runtime.r .
 
 chmod -R 755 bootstrap runtime.r R/
 
-zip -r -q $R_OUTPUT_FOLDER/runtime.zip runtime.r bootstrap R/
+zip -r -q $R_OUTPUT_FOLDER/runtime-$VERSION.zip runtime.r bootstrap R/
 
-success "Runtime package zip located at $R_OUTPUT_FOLDER/runtime.zip"
+success "Runtime package zip located at $R_OUTPUT_FOLDER/runtime-$VERSION.zip"

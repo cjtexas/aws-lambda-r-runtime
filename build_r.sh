@@ -13,9 +13,8 @@ R_SOURCE_FOLDER=${R_OUTPUT_FOLDER}/R-$VERSION
 
 if [ -d "${R_SOURCE_FOLDER}" ]; then
   	rm -rf $R_SOURCE_FOLDER
- else
-	sudo mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
 fi
+	sudo mkdir -p $R_SOURCE_FOLDER || error "Unable to create folder ${R_SOURCE_FOLDER}"
 
  
  
@@ -40,7 +39,7 @@ mv $TMP/R-$VERSION/* $R_SOURCE_FOLDER
 
 rm -rf $TMP
  
-libs=( file wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
+libs=( git file wget make zip readline-devel xorg-x11-server-devel libX11-devel libXt-devel curl-devel gcc-c++ gcc-gfortran zlib-devel bzip2 bzip2-libs bzip2-devel xz-devel pcre-devel openssl-devel libxml2-devel )
 install_libs $libs
 
 
