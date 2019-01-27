@@ -53,8 +53,8 @@ information "Require libs  installed \n\n"
 # issue seems similar to https://stackoverflow.com/questions/40639138/configure-error-installing-r-3-3-2-on-ubuntu-checking-whether-bzip2-support-suf
  
 cd ${R_SOURCE_FOLDER}
-infortmation "Installing Dev tools"
-yum groupinstall "Development Tools"
+information "Installing Dev tools"
+yum -y groupinstall "Development Tools"
 
 ./configure --prefix=$R_SOURCE_FOLDER --exec-prefix=$R_SOURCE_FOLDER --with-libpth-prefix=/opt/	
 
