@@ -166,8 +166,8 @@ log_debug() {
 
 function install_libs()
 {
-    $1=${1:-}
-     for lib in "${1[@]}"
+    IN=${1:-}
+     for lib in "${IN[@]}"
     do
         information "Installing required libs $lib"
         sudo yum install -y $lib || (error "Unable to install $lib" && exit)
