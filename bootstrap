@@ -14,5 +14,6 @@ do
   ls -la /opt/R
   ls -la /opt
   ls -la /usr/bin
+  
   /opt/R/bin/Rscript /opt/runtime.r $EVENT_DATA $REQUEST_ID
 
