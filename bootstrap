@@ -17,3 +17,4 @@ do
   
   /opt/R/bin/Rscript /opt/runtime.r $EVENT_DATA $REQUEST_ID
 
+done
