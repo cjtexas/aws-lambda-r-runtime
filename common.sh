@@ -15,7 +15,7 @@ check_aws_configured()
 
     command -v pip >/dev/null || (information "installing pip" && curl -s "https://bootstrap.pypa.io/get-pip.py" -o get-pip.py && (python get-pip.py || error "unable to install pip"))
     command -v  aws >/dev/null ||(information "installing aws cli"  &&  (pip install awscli --upgrade --user || error "unable to install awscli"))   
-    if [ ! -f "/root/.aws/credentials" ]; then
+    if [ ! -f "~/.aws/credentials" ]; then
         aws configure || error "unable to configure aws"
     fi
      
