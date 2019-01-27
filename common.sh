@@ -170,5 +170,8 @@ function install_libs()
     do
         echo  "Installing $lib"
        sudo yum -y install $lib 
+       echo  "Installed $lib"
     done
+
+    echo "all libs installed "
 }
