@@ -175,7 +175,7 @@ function install_libs()
 }
 
 
-functiopn create_folders()
+function create_folders()
 {
 
 
