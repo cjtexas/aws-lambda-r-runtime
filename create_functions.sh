@@ -6,6 +6,10 @@ REGION=${2:-}
 
 ROLE_ARN=${3:-}
 
+RUNTIME_ARN=${4:-}
+RECOMENDED_ARN=${5:-}
+
+
 version_input_check $VERSION
 
 
@@ -22,6 +26,18 @@ version_input_check $VERSION
     fi
 
 
+  if [ -z "$RUNTIME_ARN" ];
+    then
+        error 'RUNTIME_ARN required'
+        exit 1
+    fi
+
+     if [ -z "$RECOMENDED_ARN" ];
+    then
+        error 'RECOMENDED_ARN required'
+        exit 1
+    fi
+
 cd $BASE_DIR/example/
 chmod 755 matrix.r
 zip function.zip matrix.r
@@ -37,8 +53,11 @@ zip function.zip matrix.r
 aws lambda create-function --function-name r-matrix-example \
     --zip-file fileb://function.zip --handler matrix.handler \
     --runtime provided --timeout 60 --memory-size 3008 \
-    --layers arn:aws:lambda:$REGION:131329294410:layer:$RUNTIME_LAYER_NAME:1 \
-        arn:aws:lambda:eu-central-1:131329294410:layer:$RECOMENDED_LAYER_NAME:1 \
+    --layers $RUNTIME_ARN \
+        $RECOMENDED_ARN \
     --role $ROLE_ARN --region $REGION
 
 
+
+
+ 
