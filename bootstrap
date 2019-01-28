@@ -1,7 +1,6 @@
 #!/bin/sh
 
 set -euo pipefail
-
 # Processing
 while true
 do
@@ -10,5 +9,15 @@ do
   EVENT_DATA=$(curl -sS -LD "$HEADERS" -X GET "http://${AWS_LAMBDA_RUNTIME_API}/2018-06-01/runtime/invocation/next")
   REQUEST_ID=$(grep -Fi Lambda-Runtime-Aws-Request-Id "$HEADERS" | tr -d '[:space:]' | cut -d: -f2)
   
-  /opt/R/bin/Rscript /opt/runtime.r $EVENT_DATA $REQUEST_ID
+  #JSON_STRING=$( jq -n \
+  #                --arg ed "$EVENT_DATA" \
+  #                --arg ri "$REQUEST_ID" \
+   #               '{EVENT_DATA: $ed, REQUEST_ID: $ri}' )
+
+
+                    
+  TMP_JSON="$(mktemp)"                
+  echo   $EVENT_DATA > $TMP_JSON    
+  /opt/R/bin/Rscript  /opt/runtime.r "$TMP_JSON" "$REQUEST_ID"
+ 
 done

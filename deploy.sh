@@ -3,7 +3,7 @@
 set -euo pipefail
 
 VERSION=${1:-}
-BUCKET=${2:-}
+BUCKET=${2:-} 
 REGION=${3:-}
 
 
@@ -19,7 +19,7 @@ REGION=${3:-}
         exit 1
     fi
  if [ -z "$REGION" ];
-    then
+    then 
         echo 'region name required'
         exit 1
     fi
@@ -54,4 +54,4 @@ function releaseToRegion {
 }
  
 releaseToRegion $VERSION $REGION  runtime  $BUCKET
-releaseToRegion $VERSION $REGION recommended  $BUCKET
+#releaseToRegion $VERSION $REGION recommended  $BUCKET
